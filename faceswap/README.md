@@ -43,11 +43,13 @@ audio_file 分离出来的视频中的音频
 ```
 
 ```
+c. 
 然后调用 gen_img_from_vedio 函数， train==False 得到由视频生成的图片
 然后 调用convert_img 生成换脸图片组
 ```
 
 ```
+d.
 最后调用函数 gen_swap_vedio(extract_dir_swap, audio_file, gen_vedio)
 extract_dir_swap 是视频生成的图片换脸后的图片目录
 audio_file  是需要换脸视频的音频
