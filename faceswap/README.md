@@ -11,7 +11,8 @@ d. A视频 + B 视频
 上传的所有视频需要用函数 gen_img_from_vedio(reference_video, vedio_img_dir, train=True):生成图片
 reference_video 用户上传的视频
 vedio_img_dir 生成图片的目录
-train=True 当作为训练集的输入图片时，我们设为True
+train=True 当作为训练集的输入图片时，设为True, 表示每秒一帧，视频有多少妙就生成多少图片。默认是False，
+表示按照视频原有的的fps生成图片，用于对视频中的人换脸。
 
 ```
 2. 根据用户上传的文件，得到A， B图片组（数量可以不一致）训练模型
