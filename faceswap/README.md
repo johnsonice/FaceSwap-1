@@ -17,12 +17,13 @@ train=True 当作为训练集的输入图片时，我们设为True
 2. 根据用户上传的文件，得到A， B图片组（数量可以不一致）训练模型
 ```
 调用函数train（imageA_dir, imageb_dir, face_detect_dir, model_dir, epochs = ?, extract=False）
-其中， imageA_dir, imageB_dir分别代表用户上传的两组图片，face_detect_dir 是有图片生成的识别脸部的图片文件夹， model_dir是存放训练好的参数
-epochs是训练循环次数，extract是一个判断是否需要重新生成新的模型的参数
+其中， imageA_dir, imageB_dir分别代表用户上传的两组图片，face_detect_dir 是有图片生成的识别脸部的图片文件夹， 
+model_dir是存放训练好的参数, epochs是训练循环次数，extract是一个判断是否需要重新生成新的模型的参数
 
-train函数里，如果要重新生成新的模型的参数，需要首先分别生成的识别脸部的图片A‘ 和 B’， 生成之后会在原 A， B 文件夹内生成一个alignment.json的文件，用于训练时获取图片和换脸时获取图片。每一张图片对应json文件中的一部分，如果该图片的参数没有写入json文件，则后续函数进行训练和换脸时获取不到该图片
+train函数里，如果要重新生成新的模型的参数，需要首先分别生成的识别脸部的图片A‘ 和 B’， 
+生成之后会在原 A， B 文件夹内生成一个alignment.json的文件，用于训练时获取图片和换脸时获取图片。
+每一张图片对应json文件中的一部分，如果该图片的参数没有写入json文件，则后续函数进行训练和换脸时获取不到该图片
 
-train 超过100个iteration就会重新保存一次训练的参数，用于生成换脸的模型。 To Do： 退出问题
 ```
 3. 训练结束后，得到models里的参数模型，就可以用来换脸了。
 ```
@@ -43,13 +44,13 @@ audio_file 分离出来的视频中的音频
 ```
 
 ```
-c. 
-然后调用 gen_img_from_vedio 函数， train==False 得到由视频生成的图片
-然后 调用convert_img 生成换脸图片组
+c. 将关键帧视频变成图片，每一帧一张， 然后将这些帧生成的图片换脸
+调用 gen_img_from_vedio 函数， train==False 得到由视频生成的图片
+调用convert_img 生成换脸图片组
 ```
 
 ```
-d.
+d.最后将换脸后的图片还原成视频
 最后调用函数 gen_swap_vedio(extract_dir_swap, audio_file, gen_vedio)
 extract_dir_swap 是视频生成的图片换脸后的图片目录
 audio_file  是需要换脸视频的音频
