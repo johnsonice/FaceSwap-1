@@ -146,7 +146,7 @@ INFO    All python3 dependencies are met.
 import wraper.py as a model then follow the instruction of README.md
 
 
-Proceed to [../jiaxingzhengprotagolabs/FaceSwap/faceswap/README.md](USAGE.md)
+Proceed to [../jiaxingzhengprotagolabs/msater/FaceSwap/faceswap/README.md](USAGE.md)
 
 ## Notes
 This guide is far from complete. Functionality may change over time, and new dependencies are added and removed as time goes on. 
