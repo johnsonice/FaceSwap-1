@@ -35,12 +35,8 @@ class Train(object):
         lvl = '0' if self.args.verbose else '2'
         set_system_verbosity(lvl)
         thread = self.start_thread()
-        if self.args.preview:
-            self.monitor_preview()
-        else:
-            self.monitor_console()
-
-        self.end_thread(thread)
+        if self.stop == True:
+            self.end_thread(thread)
         
 
     def get_images(self):

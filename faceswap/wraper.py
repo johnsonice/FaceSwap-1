@@ -27,7 +27,7 @@ def delete_file(file_dir):
 
 
 
-def train(images_A_dir, images_B_dir,face_detect_dir,model_dir,epochs=100,extract=False):
+def train(images_A_dir, images_B_dir,face_detect_dir,model_dir,epochs=10000,extract=False):
 
     # To convert image a:
     extract_dir_a = os.path.join(face_detect_dir, 'A')
@@ -101,8 +101,12 @@ def process_vedio(reference_video,keypoint_video, audio_file):
         ioslate_audio(keypoint_video, audio_file)
 
 ## generate frame images from keypoint vedio
-def gen_img_from_vedio(keypoint_video, vedio_img):
-    cmd = ['ffmpeg', '-i', keypoint_video, './' + vedio_img + '/frame%d.png']
+def gen_img_from_vedio(reference_video, vedio_img_dir, train=False):
+    fps = 1
+    if train:
+        cmd = ['ffmpeg', '-i', reference_video, '-r', str(fps), './' + vedio_img_dir + '/frame%d.png'] 
+    else:
+        cmd = ['ffmpeg', '-i', reference_video, './' + vedio_img_dir + '/frame%d.png']
     status = call(cmd)
     print(status)
 
