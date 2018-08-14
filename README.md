@@ -143,7 +143,7 @@ INFO    All python3 dependencies are met.
 ```
 
 ## Run the project
-import wraper.py as a model then follow the instruction of README.md
+import wraper.py as a model then follow the instruction of USAGE.md
 
 
 Proceed to [../blob/master/USAGE.md](USAGE.md)
