@@ -146,9 +146,6 @@ INFO    All python3 dependencies are met.
 import wraper.py as a model then follow the instruction of README.md
 
 
-Proceed to [./blob/master/faceswap/README.md](USAGE.md)
+Proceed to [../blob/master/USAGE.md](USAGE.md)
 
-## Notes
-This guide is far from complete. Functionality may change over time, and new dependencies are added and removed as time goes on. 
 
-If you are experiencing issues, please raise them in the [faceswap-playground](https://github.com/deepfakes/faceswap-playground) repository instead of the main repo.
