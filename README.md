@@ -45,10 +45,6 @@ The developers are also not responsible for any damage you might cause to your o
     - Linux: build-essential, cmake
     - macOS: xquartz 
 
-## Getting the faceswap code
-Simply download the code from http://github.com/deepfakes/faceswap - For development it is recommended to use git instead of downloading the code and extracting it.
-
-For now, extract the code to a directory where you're comfortable working with it. Navigate to it with the command line. For our example we will use `~/faceswap/` as our project directory.
 
 ## Setting up for our project
 
