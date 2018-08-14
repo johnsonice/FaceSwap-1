@@ -143,19 +143,10 @@ INFO    All python3 dependencies are met.
 ```
 
 ## Run the project
-Once all these requirements are installed, you can attempt to run the faceswap tools. Use the `-h` or `--help` options for a list of options.
-
-```bash
-python faceswap.py -h
-```
-
-or run with `gui` to launch the GUI
-```bash
-python faceswap.py gui
-```
+import wraper.py as a model then follow the instruction of README.md
 
 
-Proceed to [../blob/master/USAGE.md](USAGE.md)
+Proceed to [../jiaxingzhengprotagolabs/FaceSwap/faceswap/README.md](USAGE.md)
 
 ## Notes
 This guide is far from complete. Functionality may change over time, and new dependencies are added and removed as time goes on. 
