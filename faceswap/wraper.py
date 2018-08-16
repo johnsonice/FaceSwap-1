@@ -27,7 +27,7 @@ def delete_file(file_dir):
 
 
 
-def train(images_A_dir, images_B_dir,face_detect_dir,model_dir,epochs=10000,extract=False):
+def train(images_A_dir, images_B_dir,face_detect_dir,model_dir,epochs=100,extract=False):
 
     # To convert image a:
     extract_dir_a = os.path.join(face_detect_dir, 'A')
@@ -49,12 +49,12 @@ def train(images_A_dir, images_B_dir,face_detect_dir,model_dir,epochs=10000,extr
     ## go on to train the exist model is extract == false
     if extract:
         ## reload new images and train the new model
-        delete_file(extract_dir_a)
-        delete_file(extract_dir_b)
+        # delete_file(extract_dir_a)
+        # delete_file(extract_dir_b)
         status = call(cmd_a)
         status = call(cmd_b)
 
-        delete_file(model_dir)
+        # delete_file(model_dir)
     
     status = call(cmd)
     
@@ -101,7 +101,7 @@ def process_vedio(reference_video,keypoint_video, audio_file):
         ioslate_audio(keypoint_video, audio_file)
 
 ## generate frame images from keypoint vedio
-def gen_img_from_vedio(reference_video, vedio_img_dir, train=False):
+def gen_img_from_vedio(reference_video, vedio_img_dir, train=True):
     fps = 1
     if train:
         cmd = ['ffmpeg', '-i', reference_video, '-r', str(fps), './' + vedio_img_dir + '/frame%d.png'] 
@@ -113,9 +113,15 @@ def gen_img_from_vedio(reference_video, vedio_img_dir, train=False):
 
 
 ## generate vedio from the images which are swaped successfuly
-def gen_swap_vedio(extract_dir_swap, audio_file, gen_vedio):
-    cmd = ['ffmpeg', '-i', extract_dir_swap + '/frame%d.png', '-i', audio_file, '-c:v', 'libx264', '-vf', "fps=30,format=yuv420p,setpts=0.833333333*PTS", gen_vedio]
-    status = call(cmd)
+def gen_swap_vedio(extract_dir_swap, audio_file, gen_vedio, backup=False):
+    ## some vedio needs to change its PTS to make sure their audio and generated vedio match
+    if backup == True:
+        cmd = ['ffmpeg', '-i', extract_dir_swap + '/frame%d.png', '-i', audio_file, '-c:v', 'libx264', '-vf', "fps=30,format=yuv420p,setpts=0.833333333*PTS", gen_vedio]
+    
+    else:
+        cmd = ['ffmpeg', '-i', extract_dir_swap + '/frame%d.png', '-i', audio_file, gen_vedio]
+    
+    sstatus = call(cmd)
     print(status)
 
 
